@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immaculate Kamunya - Executive Assistant Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --top-teal: #6DBECF;
+            --middle-sky: #4D8FD0;
+            --bottom-deep: #102A7A;
+            --light-blue-bg: #CFE6F2;
+            --white: #FFFFFF;
+            --icon-gray: #D0D5D9;
+            --button-outline: #4B82C0;
+            --dark-text: #1a1a1a;
+            --dark-bg: #0f1f3a;
+            --card-contrast: #213a5e;
+            --card-bg: var(--card-contrast);
+            --border-color: #2a4060;
+            --light-text: #e8eef5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--light-text);
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #102A7A 50%, var(--dark-bg) 100%);
+            background-attachment: fixed; /* Optional: keeps gradient fixed during scroll */
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--top-teal) 0%, var(--middle-sky) 50%, var(--bottom-deep) 100%);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(16, 42, 122, 0.3);
+            position: relative;
+        }
+
+        /* Profile Picture Area */
+        .profile-picture-container {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-picture {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 5px solid var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--light-blue-bg);
+            box-shadow: 0 0 12px rgba(109, 190, 207, 0.4), 0 4px 15px rgba(0, 0, 0, 0.3); /* Added glowing ring */
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05); /* Hover zoom effect */
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-picture.placeholder {
+            background: linear-gradient(135deg, var(--top-teal) 0%, var(--middle-sky) 100%);
+            font-size: 4rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .resume-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--top-teal) 0%, var(--middle-sky) 100%);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(109, 190, 207, 0.3);
+        }
+
+        .resume-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(109, 190, 207, 0.4);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: var(--white);
+            text-shadow: 0 0 5px var(--light-blue-bg); /* Subtle text glow on hover */
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: rgba(26, 47, 74, 0.9); /* Translucent background */
+            backdrop-filter: blur(4px); /* Glass effect */
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: var(--top-teal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--light-blue-bg);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            animation-delay: 0.1s;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: var(--top-teal);
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--top-teal) 0%, var(--middle-sky) 100%);
+        }
+
+        /* Professional Summary */
+        #summary {
+            background-color: var(--dark-bg);
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        #summary {
+            background: linear-gradient(135deg, rgba(33, 58, 94, 0.3) 0%, rgba(16, 42, 122, 0.2) 100%);
+            border-left: 4px solid var(--top-teal);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(109, 190, 207, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        #summary:hover {
+            box-shadow: 0 8px 30px rgba(109, 190, 207, 0.25);
+            border-left-color: var(--middle-sky);
+        }
+
+        #summary p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--light-text);
+            text-align: justify; /* Justify the text to extend evenly */
+            width: 100%; /* Extend to full width */
+            margin-top: 1.5em; /* 1.5em space before the paragraph */
+            margin-bottom: 1.5em; /* 1.5em space after the paragraph */
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: var(--dark-bg);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--top-teal);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 0 1px var(--button-outline); /* Subtle border glow */
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(109, 190, 207, 0.3); /* Increased hover glow */
+            background: linear-gradient(135deg, rgba(109, 190, 207, 0.15) 0%, rgba(77, 143, 208, 0.15) 100%);
+            border-color: var(--button-outline);
+        }
+
+        .skill-card h3 {
+            color: var(--top-teal);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .skill-card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Achievements Section */
+        #achievements {
+            background-color: var(--dark-bg);
+        }
+
+        .achievements-list {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .achievement-item {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--top-teal);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 0 1px var(--button-outline); /* Subtle border glow */
+        }
+
+        .achievement-item h3 {
+            color: var(--top-teal);
+            margin-bottom: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .achievement-item p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .metric {
+            color: var(--light-blue-bg);
+            font-weight: 700;
+        }
+
+        /* Experience Section */
+        #experience {
+            background-color: var(--dark-bg);
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .experience-item {
+            margin-bottom: 35px;
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(33, 58, 94, 0.2) 0%, rgba(16, 42, 122, 0.1) 100%);
+            border-left: 4px solid var(--top-teal);
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(109, 190, 207, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 6px 20px rgba(109, 190, 207, 0.2);
+            border-left-color: var(--middle-sky);
+            transform: translateX(5px);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .experience-header h3 {
+            color: var(--top-teal);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .experience-header .company {
+            color: var(--middle-sky);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .experience-dates {
+            color: var(--icon-gray);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .experience-location {
+            color: var(--icon-gray);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .experience-description {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Education Section */
+        #education {
+            background-color: var(--dark-bg);
+        }
+
+        .education-item {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 0 1px var(--button-outline); /* Subtle border glow */
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-item h3 {
+            color: var(--top-teal);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .education-item .institution {
+            color: var(--middle-sky);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .education-item .details {
+            color: var(--icon-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Certifications */
+        .certifications {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 0 1px var(--button-outline); /* Subtle border glow */
+        }
+
+        .certifications h4 {
+            color: var(--top-teal);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .certifications p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--top-teal) 0%, var(--middle-sky) 50%, var(--bottom-deep) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--light-blue-bg);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--white);
+            text-shadow: 0 0 5px var(--light-blue-bg); /* Subtle text glow on hover */
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(109, 190, 207, 0.1);
+            color: var(--icon-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--icon-gray);
+        }
+
+        .social-icon:hover {
+            background-color: var(--top-teal);
+            color: var(--white);
+            border-color: var(--top-teal);
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(109, 190, 207, 0.4);
+        }
+
+        /* Scroll Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        section:nth-of-type(1) { animation-delay: 0.15s; }
+        section:nth-of-type(2) { animation-delay: 0.25s; }
+        section:nth-of-type(3) { animation-delay: 0.35s; }
+        section:nth-of-type(4) { animation-delay: 0.45s; }
+        section:nth-of-type(5) { animation-delay: 0.55s; }
+        section:nth-of-type(6) { animation-delay: 0.65s; }
+        section:nth-of-type(7) { animation-delay: 0.75s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+
+            .profile-picture {
+                width: 110px;
+                height: 110px;
+                font-size: 2.5rem;
+            }
+
+            .profile-picture.placeholder {
+                font-size: 3rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            section h2 {
+                font-size: 1.6rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 25px 15px;
+            }
+
+            .profile-picture {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+
+            .profile-picture.placeholder {
+                font-size: 2.5rem;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            nav ul {
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            section h2 {
+                font-size: 1.4rem;
+            }
+
+            main {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="profile-picture-container">
+            <div class="profile-picture">
+                <img src="profile.png" alt="Immaculate Kamunya">
+            </div>
+        </div>
+        <h1>Immaculate Kamunya</h1>
+        <p>Executive Assistant & Customer Experience Specialist</p>
+        <div class="contact-info">
+            <a href="mailto:iwanjuguk@gmail.com">iwanjuguk@gmail.com</a>
+            <span>|</span>
+            <a href="tel:+2547153311200">+254 715 331 1200</a>
+            <span>|</span>
+            <span>Nairobi, Kenya</span>
+            <span>|</span>
+            <a href="https://www.linkedin.com/in/immaculatekamunya/" target="_blank" aria-label="LinkedIn Profile">LinkedIn</a>
+            <span>|</span>
+            <a href="https://github.com/IKamunya-web" target="_blank" aria-label="GitHub Profile">GitHub</a>
+        </div>
+        <a href="#" class="resume-button" aria-label="Download Resume PDF">📄 Download Resume</a>
+    </header>
+
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main Navigation">
+        <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#value-proposition">What I Bring</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main role="main">
+        <!-- Professional Summary -->
+        <section id="summary" role="region" aria-labelledby="summary-heading">
+            <h2 id="summary-heading">Professional Summary</h2>
+            <p>
+                Strategic Executive Partner with 7+ years of experience in high-stakes environments, specializing in C-suite support, operational governance, and cross-functional coordination. Proven ability to drive efficiency, notably increasing executive strategic time by 15% and improving audit readiness by 40% through meticulous documentation and process optimization. Expert in end-to-end Logistics and Event Management, ensuring seamless execution of high-profile corporate engagements. Combines advanced administrative expertise with a Customer Experience focus to strengthen stakeholder relations and deliver measurable organizational value. Seeking to leverage a results-driven approach to support a dynamic executive team.
+            </p>
+        </section>
+
+        <!-- What I Bring Section -->
+        <section id="value-proposition" role="region" aria-labelledby="value-heading">
+            <h2 id="value-heading">What I Bring to Your Executive Team</h2>
+            <p style="font-size: 1.05rem; line-height: 1.8; color: var(--light-text); text-align: justify; width: 100%; margin-top: 1.5em; margin-bottom: 1.5em;">
+                I serve as a strategic force multiplier for senior leadership. My value proposition is rooted in three core pillars: <strong>Time Protection</strong>—I implement structured administrative systems and proactive calendar management that consistently increase executive availability for high-level strategic work (proven 15% increase in dedicated strategic time). <strong>Operational Governance</strong>—I ensure seamless coordination of high-stakes documentation and board materials, improving compliance and audit readiness (proven 40% improvement in readiness). <strong>Stakeholder Excellence</strong>—I leverage my Customer Experience expertise to ensure all internal and external communications are handled with the highest level of professionalism, clarity, and diplomacy, strengthening key relationships.
+            </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" role="region" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Top Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Executive Administrative Assistance</h3>
+                    <p>Expert in managing complex calendars, correspondence, and travel logistics for senior leadership, ensuring optimal time utilization and focus on strategic priorities.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Event Planning</h3>
+                    <p>Proficient in coordinating and executing high-profile corporate events, board meetings, and executive engagements with meticulous attention to detail and stakeholder satisfaction.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Logistics Management</h3>
+                    <p>Skilled in end-to-end logistics coordination, from travel arrangements to supply chain management, ensuring seamless operational execution.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Cross-functional Coordination</h3>
+                    <p>Proven ability to liaise effectively with internal and external stakeholders, aligning teams and departments toward common organizational objectives.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Board Governance & Documentation</h3>
+                    <p>Expert in coordinating, preparing, and managing sensitive board and committee documentation, ensuring compliance and audit readiness.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Process Optimization</h3>
+                    <p>Skilled in identifying operational bottlenecks and implementing streamlined processes that enhance departmental efficiency and organizational performance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools & Technologies Section -->
+        <section id="tools" role="region" aria-labelledby="tools-heading">
+            <h2 id="tools-heading">Tools & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Productivity Suites</h3>
+                    <p><strong>Microsoft Office Suite</strong> (Advanced Word, Excel, PowerPoint) • <strong>Google Workspace</strong> (Docs, Sheets, Slides)</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Communication & Collaboration</h3>
+                    <p><strong>Microsoft Teams</strong> • <strong>Slack</strong> • <strong>Zoom</strong> • <strong>Outlook/Gmail</strong> (Advanced Calendar & Email Management)</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Project & Task Management</h3>
+                    <p><strong>Asana</strong> • <strong>Trello</strong> • <strong>Jira</strong> (Basic) • <strong>Microsoft Planner</strong></p>
+                </div>
+                <div class="skill-card">
+                    <h3>Data & Document Management</h3>
+                    <p><strong>SharePoint</strong> • <strong>OneDrive</strong> • <strong>CRM Systems</strong> (Familiarity) • <strong>Digital Archiving Systems</strong></p>
+                </div>
+                <div class="skill-card">
+                    <h3>Specialized Tools</h3>
+                    <p><strong>Customer Journey Mapping Tools</strong> • <strong>ERP Systems</strong> (User-level familiarity) • <strong>Advanced Analytics</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" role="region" aria-labelledby="achievements-heading">
+            <h2 id="achievements-heading">Key Achievements</h2>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <h3>Executive Efficiency & Time Optimization</h3>
+                    <p>Managed the executive's calendar and correspondence, resulting in a <span class="metric">15% increase in time dedicated to strategic initiatives</span> by proactively filtering and prioritizing commitments.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>Customer Satisfaction & Service Excellence</h3>
+                    <p>Reduced customer complaint resolution time by <span class="metric">25%</span> by implementing a new ticketing and escalation protocol during tenure as a Customer Experience Specialist.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>Compliance & Audit Readiness</h3>
+                    <p>Streamlined the process for coordinating governance documentation, improving compliance audit readiness by <span class="metric">40%</span> through the introduction of a centralized digital repository.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>Event Management & Stakeholder Relations</h3>
+                    <p>Successfully managed and executed <span class="metric">5+ high-profile corporate events</span>, consistently meeting budget and exceeding stakeholder expectations for quality and professionalism.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" role="region" aria-labelledby="experience-heading">
+            <h2 id="experience-heading">Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Executive Assistant</h3>
+                    <span class="company">SBM Bank Kenya</span>
+                </div>
+                <div class="experience-location">Nairobi, Kenya</div>
+                <div class="experience-dates">March 2023 - Present</div>
+                <p class="experience-description">
+                    Provide strategic support to C-suite executives, managing complex calendars, correspondence, and board governance documentation. Coordinate high-level meetings, prepare executive briefings, and ensure seamless operational delivery. Collaborate with cross-functional teams to optimize workflows and support organizational objectives.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Customer Experience Specialist</h3>
+                    <span class="company">Springboard Capital Ltd</span>
+                </div>
+                <div class="experience-location">Nairobi, Kenya</div>
+                <div class="experience-dates">March 2021 - February 2023</div>
+                <p class="experience-description">
+                    Drove customer satisfaction and service delivery excellence through process improvement and stakeholder engagement. Implemented new ticketing and escalation protocols that significantly reduced resolution times. Managed customer relationships and coordinated cross-departmental initiatives to enhance overall experience.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Assistant Office Administrator</h3>
+                    <span class="company">Institute of Customer Experience</span>
+                </div>
+                <div class="experience-location">Nairobi, Kenya</div>
+                <div class="experience-dates">August 2020 - December 2020</div>
+                <p class="experience-description">
+                    Provided comprehensive administrative support, including office management, scheduling, and coordination of organizational activities. Assisted in the implementation of office procedures and contributed to operational efficiency improvements.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Registration Officer</h3>
+                    <span class="company">Refugee Affairs Secretariat</span>
+                </div>
+                <div class="experience-location">Nairobi, Kenya</div>
+                <div class="experience-dates">January 2018 - January 2019</div>
+                <p class="experience-description">
+                    Managed high-volume data processing and verification in a humanitarian context, maintaining meticulous records and ensuring compliance with organizational standards. Processed and verified over 500 refugee registration cases with exceptional accuracy within a 12-month period.
+                </p>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" role="region" aria-labelledby="education-heading">
+            <h2 id="education-heading">Education & Certifications</h2>
+
+            <div class="education-item">
+                <h3>Bachelor of Environmental Studies (Community Development)</h3>
+                <div class="institution">Kenyatta University</div>
+                <div class="details">Nairobi, Kenya | August 2010 - April 2014</div>
+            </div>
+
+            <div class="education-item">
+                <h3>Certificate in Computer Packages</h3>
+                <div class="institution">African Institute of Research and Development Studies</div>
+                <div class="details">Nairobi, Kenya | January 2009 - November 2009</div>
+            </div>
+
+            <div class="certifications">
+                <h4>Professional Certifications</h4>
+                <p><strong>Customer Journey Mapping</strong> • <strong>Customer Experience</strong> • <strong>Disability Mainstreaming</strong></p>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: var(--icon-gray);">These certifications enable me to deliver inclusive, customer-centric solutions that drive organizational excellence.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>&copy; 2025 Immaculate Kamunya. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/immaculatekamunya/" target="_blank" class="social-icon" title="LinkedIn" aria-label="Visit LinkedIn Profile">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/IKamunya-web" target="_blank" class="social-icon" title="GitHub" aria-label="Visit GitHub Profile">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            <a href="mailto:iwanjuguk@gmail.com" class="social-icon" title="Email" aria-label="Send Email">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </a>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.85rem;">
+            <a href="mailto:iwanjuguk@gmail.com">Get in Touch</a>
+        </p>
+    </footer>
+
+    <script>
+        // Profile Picture Upload Handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePicture = document.querySelector('.profile-picture');
+            
+            // Allow click to upload (optional feature for GitHub Pages)
+            profilePicture.addEventListener('click', function() {
+                // You can add a file input or link to instructions for uploading profile picture
+                console.log('Profile picture area clicked. To add your photo, replace the placeholder with an image file.');
+            });
+
+            // Instructions for adding profile picture
+            profilePicture.title = 'To add your profile picture, create an image file named "profile.jpg" in the same directory and update the HTML';
+        });
+    </script>
+</body>
+</html>
